@@ -77,3 +77,10 @@ ___________________________________________________________
 
 7. Seleziona il numero di post e di media per ogni utente (25)
 
+SELECT users.username, COUNT(DISTINCT posts.id) AS total_post, COUNT(DISTINCT medias.id) AS total_media
+FROM `users`
+INNER JOIN posts
+ON posts.user_id = users.id
+INNER JOIN medias
+ON medias.user_id = users.id
+GROUP BY users.id;
